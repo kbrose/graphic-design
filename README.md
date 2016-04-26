@@ -8,4 +8,4 @@ Yes:
 
 ## "Robot Apartment"
 
-![](https://github.com/kbrose/graphic-design/blob/master/robot-apartment/kevin/robot-without-a-cause.svg)
+![](https://raw.githubusercontent.com/kbrose/graphic-design/master/robot-apartment/kevin/robot-without-a-cause.svg)
