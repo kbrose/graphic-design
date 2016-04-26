@@ -1,0 +1,153 @@
+\documentclass[11pt, crop, convert={outext=.svg,command=\unexpanded{pdf2svg \infile\space\outfile}},multi=false]{standalone}
+
+%----------Packages----------
+\usepackage{tikz}
+	
+\usepackage{amsmath}
+
+\usepackage{varwidth}
+%----------Commands----------
+
+\makeatletter
+\ifcase \@ptsize \relax% 10pt
+  \newcommand{\miniscule}{\@setfontsize\miniscule{4}{5}}% \tiny: 4/5
+\or% 11pt
+  \newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}% \tiny: 5/6
+\or% 12pt
+  \newcommand{\miniscule}{\@setfontsize\miniscule{6}{7}}% \tiny: 6/7
+\fi
+\makeatother
+
+%----------Title-------------
+
+\begin{document}
+\pagenumbering{gobble}
+
+
+\scalebox{2.6}{
+\begin{tikzpicture}
+% Helps the viewing
+%\fill[colorTwo] (-.5,-1) rectangle (6,9.5);
+%\fill (-0.4,3.99) rectangle (5.4,9.4);
+%\fill[colorTwo] (-.3,4) rectangle (5.3, 9.3);
+
+% The Seventies
+%\definecolor{colorOne}{rgb}{1,.3,.2}
+%\definecolor{colorTwo}{rgb}{.2,.3,.2}
+
+% Circuit Board
+%\definecolor{colorOne}{rgb}{1,.8,.4}
+%\definecolor{colorTwo}{rgb}{.2,.6,.3}
+
+% Blue Period
+\definecolor{colorOne}{rgb}{.6,.9,1}
+\definecolor{colorTwo}{rgb}{.2,.2,.4}
+
+% Blue period 2
+%\definecolor{colorOne}{rgb}{1,1,1}
+%\definecolor{colorTwo}{rgb}{.1, .3, .5}
+
+\begin{scope}[shift={(0,0)},xscale=1] %%% FACADE + DOOR + WINDOWS
+
+	%%% FACADE
+	%\fill (-0.4,0) rectangle (5.4,4);
+	\fill[colorTwo] (-.7,-.3) rectangle (5.7,9.4);
+	\fill[colorOne] (-.4,0) -- (-.4, 2.871) -- (-.3, 4) -- (5.3, 4) -- (5.4, 3.225) -- (5.4,0) -- (-.4,0);
+	
+	%%% DOOR
+	\begin{scope}[shift={(0,0)}]
+	\fill[colorTwo] (2.,0.5) rectangle (3., 1.5);
+	\fill[colorOne] (2.1,0.6) rectangle (2.9, 1.4);
+	\fill[colorTwo] (2.2,0.7) rectangle (2.8, 1.3);
+	\end{scope}
+	\def\y{.15};
+	\pgfmathsetmacro\x{(1 - \y) / 3};
+	\foreach \i in {0,1,2,3}
+	{ \fill[colorTwo] (2 + \x * \i, .1) rectangle (2 + \x * \i + \y, .4); }
+	
+	%%% WINDOWS
+	\fill[colorTwo] (-0.1,.5) rectangle (.65,0.95);
+	\fill[colorTwo] (.95,.5) rectangle (1.7,0.95);
+	\fill[colorOne] (.22, .4) rectangle (.33, 1);
+	\fill[colorOne] (1.27, .4) rectangle (1.38, 1);
+	\begin{scope}[shift={(3.4,0)}]
+		\fill[colorTwo] (-0.1,.5) rectangle (.65,0.95);
+		\fill[colorTwo] (.95,.5) rectangle (1.7,0.95);
+		\fill[colorOne] (.22, .4) rectangle (.33, 1);
+		\fill[colorOne] (1.27, .4) rectangle (1.38, 1);
+	\end{scope}
+	
+\end{scope} %%% END FACADE + DOOR + WINDOWS
+
+\begin{scope} %%% CIRCUITS
+	\clip (-0.5,0) rectangle (5.4,4.1);
+	%% 1
+	\draw[colorTwo, line width=.32cm] (0.06,1.05) -- (0.06, 2.05) -- (-.94, 3.05);
+	%% 2
+	\draw[colorTwo, line width=.32cm] (0.49,1.05) -- (0.49, 2.2) -- (-.24, 2.95) -- (-.24, 4);
+	%\draw[colorTwo, line width=.32cm] (0.49,1.05) -- (0.49, 2.18) -- (0.06, 2.61) -- (0.06, 4);
+	%% 3
+	\def\xa{2.8}
+	\pgfmathsetmacro\xb{\xa + .49};
+	\pgfmathsetmacro\xc{\xa + .17};
+	\pgfmathsetmacro\xd{\xc + .49};
+	\draw[colorTwo, line width=.32cm] (1.11,1.05) -- (1.11, \xa) -- (.62, \xb) -- (.62, 4.1);
+	%% 4
+	\draw[colorTwo, line width=.32cm] (1.54,1.05) -- (1.54, \xc) -- (1.05, \xd) -- (1.05,4.1);
+	%% 5
+	\draw[colorTwo, line width=.32cm] (3.46,1.05) -- (3.46, 2) -- (2.16,2) -- (2.16,4.1);
+	%% 6
+	\draw[colorTwo, line width=.32cm] (3.89,1.05) -- (3.89, 2.43) -- (2.59,2.43) -- (2.59, 4.1);
+	%% 7
+%	\draw[colorTwo, line width=.32cm] (4.51,1.05) -- (4.51, 3.7) -- (3.51, 4.7);
+	\draw[colorTwo, line width=.32cm] (4.51,1.05) -- (4.51, 4);
+	%% 8
+%	\draw[colorTwo, line width=.32cm] (4.94,1.05) -- (4.94, 4);
+	\draw[colorTwo, line width=.32cm] (4.94,1.05) -- (4.94, 3) -- (5.24,3.3) -- (5.24, 4.1);
+\end{scope} %%% END CIRCUITS
+
+\begin{scope} %%% CIRCUIT NEGATIVES 
+	\clip (-0.4,4) rectangle (5.5,9.4);
+	%% 1
+	%% 2
+%	\draw[line width=.32cm] (0.06,4) -- (0.06,9) -- (4.94,9) -- (4.94,6.3);
+	\draw[colorOne,line width=.32cm] (-.24,4) -- (-.24,9) -- (5.24,9) -- (5.24,6.3);
+	%\fill (4.94,6.3) circle (.25cm);
+	\fill[colorOne] (5.24,6.3) circle (.25cm);
+	%% 3
+	\draw[colorOne,line width=.32cm] (.62,4) -- (.62,7) -- (1.8,8.18);
+	\fill[colorOne] (1.8,8.18) circle (.25cm);
+	%\fill (.77,5) circle (.25cm);
+	%% 4
+	\draw[colorOne,line width=.32cm] (1.05,4) -- (1.05,6.82) -- (1.55, 7.32) -- (3.61, 7.32);
+	\fill[colorOne] (3.61, 7.32) circle (.25cm);
+	%% 5
+	\draw[colorOne,line width=.32cm] (2.16,4) -- (2.16, 4.54) -- (1.67, 4.93) -- (1.67, 6.3);
+	\fill[colorOne] (1.67, 6.3) circle (.25cm);
+	%% 6
+	\draw[colorOne,line width=.32cm] (2.59, 4) -- (2.59, 6.3);
+	\fill[colorOne] (2.59, 6.3) circle (.25cm);
+	%% 7
+%	\draw[line width=.32cm] (4.51, 3.7) -- (3.61, 4.6) -- (3.61, 5.5);
+%	\fill (3.61, 5.5) circle (.25cm);
+	\draw[colorOne,line width=.32cm] (4.51, 4) -- (4.51,5.5) -- (3.61, 5.5);
+	\fill[colorOne] (3.61, 5.5) circle (.25cm);
+	%% 8
+%	\draw[line width=.32cm] (4.94,4) -- (4.94,5.5);
+%	\fill (4.94, 5.5) circle (.25cm);
+	\draw[colorOne,line width=.32cm] (5.24,4) -- (5.24,5.5);
+	\fill[colorOne] (5.24, 5.5) circle (.25cm);
+\end{scope} %%% END CIRCUIT NEGATIVES
+
+%%% WINDOW PANE DIVISION
+%\fill (-.3, 1.5) rectangle (5.2, 1.6);
+\end{tikzpicture}
+}
+
+
+\end{document}
+
+
+
+
+

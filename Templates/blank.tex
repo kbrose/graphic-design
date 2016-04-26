@@ -1,0 +1,35 @@
+\documentclass[11pt, crop, convert={outext=.svg,command=\unexpanded{pdf2svg \infile\space\outfile}},multi=false]{standalone}
+
+%----------Packages----------
+\usepackage{tikz}
+
+\usepackage{amsmath}
+\usepackage{varwidth}
+%----------Commands----------
+
+\makeatletter
+\ifcase \@ptsize \relax% 10pt
+  \newcommand{\miniscule}{\@setfontsize\miniscule{4}{5}}% \tiny: 4/5
+\or% 11pt
+  \newcommand{\miniscule}{\@setfontsize\miniscule{5}{6}}% \tiny: 5/6
+\or% 12pt
+  \newcommand{\miniscule}{\@setfontsize\miniscule{6}{7}}% \tiny: 6/7
+\fi
+\makeatother
+
+%----------Title-------------
+
+\begin{document}
+\pagenumbering{gobble}
+
+
+\scalebox{1}{
+\begin{tikzpicture}
+
+
+\end{tikzpicture}
+}
+
+
+\end{document}
+
